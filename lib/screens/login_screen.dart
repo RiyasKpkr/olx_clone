@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:olx_clone/components/page_title_bar.dart';
 import 'package:olx_clone/components/under_part.dart';
@@ -8,8 +9,28 @@ import 'package:olx_clone/widgets/rounded_button.dart';
 import 'package:olx_clone/widgets/rounded_input_field.dart';
 import 'package:olx_clone/widgets/rounded_password_field.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+   LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  // @override
+  // void initState() {
+  //   loginFunction(email: emailController.text, password: passwordController.text);
+  //   super.initState();
+  // }
+
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+
+
+  loginFunction({required email,required password}){
+    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +70,19 @@ class LoginScreen extends StatelessWidget {
                           RoundedInputField(
                             hintText: 'Email',
                             icon: Icons.email,
+                            controller: emailController,
                           ),
-                          RoundedPasswordField(),
+                          RoundedPasswordField(
+                            controller: passwordController,
+                          ),
                           RoundedButton(
                             text: 'LOGIN',
-                            press: () {},
+                            press: () {
+                              // setState(() {
+                                loginFunction(email: emailController.text, password: passwordController.text);
+                              // });
+                              
+                            },
                           ),
                           SizedBox(
                             height: 10,

@@ -24,19 +24,19 @@ class Upside extends StatelessWidget {
             ),
           ),
         ),
-        iconButton(context),
+        // iconButton(context),
       ],
     );
   }
 }
 
-iconButton(BuildContext context) {
-  return IconButton(
-    color: Colors.white,
-    iconSize: 28,
-    icon: Icon(CupertinoIcons.arrow_left),
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  );
-}
+// iconButton(BuildContext context) {
+//   return IconButton(
+//     color: Colors.white,
+//     iconSize: 28,
+//     icon: Icon(CupertinoIcons.arrow_left),
+//     onPressed: () {
+//       Navigator.pop(context);
+//     },
+//   );
+// }

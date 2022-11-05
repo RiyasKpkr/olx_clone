@@ -1,20 +1,21 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:olx_clone/home.dart';
+import 'package:olx_clone/screens/login_screen.dart';
+import 'package:olx_clone/screens/user_home_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,8 +25,20 @@ class _MyAppState extends State<MyApp> {
       ),
       debugShowCheckedModeBanner: false,
       home: AnimatedSplashScreen(
-        splash:  Image.asset('assets/olx_logo.png',color: Colors.white,),
-        nextScreen: const HomeScreen(),
+        splash: Image.asset(
+          'assets/olx_logo.png',
+          color: Colors.white,
+        ),
+        nextScreen: StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return UserHomeScreen();
+              }
+              else {
+                return  LoginScreen();
+              }
+            }),
         duration: 3000,
         splashTransition: SplashTransition.fadeTransition,
         pageTransitionType: PageTransitionType.fade,
@@ -34,3 +47,12 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+// AnimatedSplashScreen(
+//         splash:  Image.asset('assets/olx_logo.png',color: Colors.white,),
+//         nextScreen: const HomeScreen(),
+//         duration: 3000,
+//         splashTransition: SplashTransition.fadeTransition,
+//         pageTransitionType: PageTransitionType.fade,
+//         backgroundColor: Color.fromARGB(255, 8, 66, 60),
+//       ),

@@ -1,15 +1,37 @@
+import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:olx_clone/components/page_title_bar.dart';
 import 'package:olx_clone/components/under_part.dart';
 import 'package:olx_clone/components/upside.dart';
-import 'package:olx_clone/constants/constants.dart';
+// import 'package:olx_clone/constants/constants.dart';
 import 'package:olx_clone/screens/login_screen.dart';
 import 'package:olx_clone/widgets/rounded_button.dart';
 import 'package:olx_clone/widgets/rounded_input_field.dart';
 import 'package:olx_clone/widgets/rounded_password_field.dart';
 
-class Signupscreen extends StatelessWidget {
-  const Signupscreen({super.key});
+class Signupscreen extends StatefulWidget {
+   Signupscreen({super.key});
+
+  @override
+  State<Signupscreen> createState() => _SignupscreenState();
+}
+
+class _SignupscreenState extends State<Signupscreen> {
+  // @override
+  // void initState() {
+  //   authFunction(email: emailController.text, password: passwordController.text);
+  //   super.initState();
+  // }
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController userNameController = TextEditingController();
+
+  TextEditingController passwordController = TextEditingController();
+
+  authFunction({required email,required password}){
+    FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +71,24 @@ class Signupscreen extends StatelessWidget {
                           RoundedInputField(
                             hintText: 'Email',
                             icon: Icons.email,
+                            controller: emailController,
                           ),
                           RoundedInputField(
                             hintText: 'UserName',
                             icon: Icons.person,
+                            controller: userNameController,
                           ),
-                          RoundedPasswordField(),
+                          RoundedPasswordField(
+                            controller: passwordController,
+                          ),
                           RoundedButton(
                             text: 'REGISTER',
-                            press: () {},
+                            press: () {
+                              // setState(() {
+                                authFunction(email: emailController.text, password: passwordController.text);
+                              // });
+                              
+                            },
                           ),
                           SizedBox(
                             height: 10,

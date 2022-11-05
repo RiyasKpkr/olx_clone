@@ -31,6 +31,7 @@ class OnboardScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.teal[900],
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -114,13 +115,18 @@ class OnboardScreen extends StatelessWidget {
                 },
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return Signupscreen();
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Signupscreen();
+                        },
+                      ),
+                    );
                   },
                   child: Card(
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 25),
                     child: ListTile(
                       leading: Icon(
                         Icons.login,
