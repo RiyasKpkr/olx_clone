@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:olx_clone/home.dart';
 import 'package:olx_clone/screens/login_screen.dart';
+import 'package:olx_clone/screens/main_screen.dart';
 import 'package:olx_clone/screens/user_home_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return UserHomeScreen();
+                return Mainpage();
               }
               else {
                 return  LoginScreen();

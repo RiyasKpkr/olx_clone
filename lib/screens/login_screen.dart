@@ -70,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           RoundedInputField(
                             hintText: 'Email',
                             icon: Icons.email,
+                            iconColor: kPrimaryColor,
                             controller: emailController,
                           ),
                           RoundedPasswordField(
