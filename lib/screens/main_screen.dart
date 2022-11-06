@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:olx_clone/screens/my_ads_screen.dart';
 import 'package:olx_clone/screens/profile_screen.dart';
 import 'package:olx_clone/screens/user_chat_screen.dart';
