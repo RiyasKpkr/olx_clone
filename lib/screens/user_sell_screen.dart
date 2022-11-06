@@ -3,12 +3,9 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:olx_clone/screens/main_screen.dart';
-import 'package:olx_clone/screens/user_home_screen.dart';
 
 class SellScreen extends StatefulWidget {
   const SellScreen({super.key});
@@ -185,7 +182,7 @@ class _SellScreenState extends State<SellScreen> {
                         .add({
                       'image': downloadUrl,
                       'product': nameController.text,
-                      'discrption': descriptionController.text,
+                      'discription': descriptionController.text,
                       'price': priceController.text,
                     }).whenComplete(() {
                       imageFile = null;
