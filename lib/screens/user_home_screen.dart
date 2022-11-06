@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:olx_clone/screens/category_screen.dart';
-// import 'package:olx_clone/widgets/bottom_navigation_bar.dart';
+import 'package:olx_clone/widgets/grid_view_widget.dart';
 import 'package:olx_clone/widgets/top_bar.dart';
 
 class UserHomeScreen extends StatelessWidget {
@@ -106,9 +106,9 @@ class UserHomeScreen extends StatelessWidget {
               ],
             ),
             CategoryScreen(),
+            GridViewWidget(),
           ],
         ),
-        // bottomNavigationBar: BottumNavigatonBarWidget(),
       ),
     );
   }
