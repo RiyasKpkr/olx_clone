@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:olx_clone/screens/login_screen.dart';
 import 'package:olx_clone/screens/onboard_screen.dart';
 import 'package:olx_clone/widgets/product_list.dart';
 
@@ -23,7 +24,7 @@ class UserHomeScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return OnboardScreen();
+                            return LoginScreen();
                           },
                         ),
                       ),

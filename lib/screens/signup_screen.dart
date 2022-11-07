@@ -7,6 +7,7 @@ import 'package:olx_clone/components/upside.dart';
 import 'package:olx_clone/constants/constants.dart';
 // import 'package:olx_clone/constants/constants.dart';
 import 'package:olx_clone/screens/login_screen.dart';
+import 'package:olx_clone/screens/user_home_screen.dart';
 import 'package:olx_clone/widgets/rounded_button.dart';
 import 'package:olx_clone/widgets/rounded_input_field.dart';
 import 'package:olx_clone/widgets/rounded_password_field.dart';
@@ -31,7 +32,16 @@ class _SignupscreenState extends State<Signupscreen> {
   TextEditingController passwordController = TextEditingController();
 
   authFunction({required email,required password}){
-    FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+    FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password).then(
+          (value) => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return UserHomeScreen();
+              },
+            ),
+          ),
+        );;
   }
 
   @override

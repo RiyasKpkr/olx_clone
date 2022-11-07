@@ -5,12 +5,13 @@ import 'package:olx_clone/components/under_part.dart';
 import 'package:olx_clone/components/upside.dart';
 import 'package:olx_clone/constants/constants.dart';
 import 'package:olx_clone/screens/signup_screen.dart';
+import 'package:olx_clone/screens/user_home_screen.dart';
 import 'package:olx_clone/widgets/rounded_button.dart';
 import 'package:olx_clone/widgets/rounded_input_field.dart';
 import 'package:olx_clone/widgets/rounded_password_field.dart';
 
 class LoginScreen extends StatefulWidget {
-   LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -27,9 +28,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextEditingController passwordController = TextEditingController();
 
-
-  loginFunction({required email,required password}){
-    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+  loginFunction({required email, required password}) {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password)
+        .then(
+          (value) => Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return UserHomeScreen();
+              },
+            ),
+          ),
+        );
   }
 
   @override
@@ -79,10 +90,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           RoundedButton(
                             text: 'LOGIN',
                             press: () {
-                              // setState(() {
-                                loginFunction(email: emailController.text, password: passwordController.text);
-                              // });
-                              
+                              setState(() {
+                                loginFunction(
+                                    email: emailController.text,
+                                    password: passwordController.text);
+                              });
                             },
                           ),
                           SizedBox(
