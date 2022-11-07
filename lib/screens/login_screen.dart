@@ -4,6 +4,7 @@ import 'package:olx_clone/components/page_title_bar.dart';
 import 'package:olx_clone/components/under_part.dart';
 import 'package:olx_clone/components/upside.dart';
 import 'package:olx_clone/constants/constants.dart';
+import 'package:olx_clone/screens/main_screen.dart';
 import 'package:olx_clone/screens/signup_screen.dart';
 import 'package:olx_clone/screens/user_home_screen.dart';
 import 'package:olx_clone/widgets/rounded_button.dart';
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return UserHomeScreen();
+                return Mainpage();
               },
             ),
           ),

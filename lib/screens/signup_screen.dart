@@ -7,6 +7,7 @@ import 'package:olx_clone/components/upside.dart';
 import 'package:olx_clone/constants/constants.dart';
 // import 'package:olx_clone/constants/constants.dart';
 import 'package:olx_clone/screens/login_screen.dart';
+import 'package:olx_clone/screens/main_screen.dart';
 import 'package:olx_clone/screens/user_home_screen.dart';
 import 'package:olx_clone/widgets/rounded_button.dart';
 import 'package:olx_clone/widgets/rounded_input_field.dart';
@@ -37,7 +38,7 @@ class _SignupscreenState extends State<Signupscreen> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return UserHomeScreen();
+                return Mainpage();
               },
             ),
           ),
